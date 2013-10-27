@@ -39,7 +39,7 @@ mongoose.connect('mongodb://localhost/tst');
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/testSave/:name/:surname/:age', demo.saveFunc);
-
+app.get('/testSearch/:name', demo.searchFunc);
 
 
 http.createServer(app).listen(app.get('port'), function(){

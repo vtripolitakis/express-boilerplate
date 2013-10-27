@@ -21,3 +21,20 @@ exports.saveFunc  = function(req, res){
 
 };
 
+exports.searchFunc = function(req,res){
+	var out='';
+	var rname=req.param('name');
+	User.findOne({name:rname}, function(err,user)
+	{
+	if (user!=null)
+	{
+		out=out+user.name+" "+user.surname+": "+user.age;
+	}
+	else
+	{
+		out="nothing found :-(";
+	}
+		res.send(out);
+	});
+};
+
