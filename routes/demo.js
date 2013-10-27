@@ -38,3 +38,26 @@ exports.searchFunc = function(req,res){
 	});
 };
 
+exports.searchManyFunc = function(req,res)
+{
+
+var out='';
+var rname=req.param('name');
+
+User.find({name:rname}, function(err,user)
+{
+		
+	for (var i=0;i<user.length;i++)
+	{
+		out=out+user[i].name+" "+user[i].surname+", "+user[i].age+"<br/>\n";
+	}
+
+	if (user.length==0)
+	{
+		out='no users found';
+	}
+
+	res.send(out);
+});
+
+};
